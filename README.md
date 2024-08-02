@@ -43,7 +43,7 @@ Use the following steps to cluster the cryptocurrencies for the best value for k
 . Create a new DataFrame with the PCA data and set the "coin_id" index from the original DataFrame as the index for the new DataFrame.
 
 ## PCA DataFrame:
-<img width="329" alt="Screenshot 2024-08-02 at 1 09 32 pm" src="https://github.com/user-attachments/assets/a94d710b-ac9c-4473-97a0-c2724177897e">
+<img width="713" alt="Screenshot 2024-08-02 at 2 33 35 pm" src="https://github.com/user-attachments/assets/c4574709-980d-42aa-9837-d2fb4cebfa3b">
 
 . Find the Best Value for k Using the PCA Data
 . Use the elbow method on the PCA data to find the best value for k using the following steps:
@@ -58,28 +58,31 @@ What is the best value for k when using the PCA data?
 My answer: "Looking at the elbow curve above, the best value for k using the PCA data is 4."
 Does it differ from the best k value found using the original data?
 My answer: "This does not differ from the best value of k found using the original data."
-PCA Data Elbow Curve:
-PCA elbow curve
-Cluster Cryptocurrencies with K-means Using the PCA Data
-Use the following steps to cluster the cryptocurrencies for the best value for k on the PCA data:
 
-Initialize the K-means model with the best value for k.
-Fit the K-means model using the PCA data.
-Predict the clusters to group the cryptocurrencies using the PCA data.
-Create a copy of the DataFrame with the PCA data and add a new column to store the predicted clusters.
-Create a scatter plot using hvPlot as follows:
-Set the x-axis as "PCA1" and the y-axis as "PCA2".
-Color the graph points with the labels found using K-means.
-Add the "coin_id" column in the hover_cols parameter to identify the cryptocurrency represented by each data point.
-PCA Data Scatter:
-PCA data scatter
-Visualize and Compare the Results
+## Cluster Cryptocurrencies with K-means Using the PCA Data
+Use the following steps to cluster the cryptocurrencies for the best value for k on the PCA data:
+. Initialize the K-means model with the best value for k.
+. Fit the K-means model using the PCA data.
+. Predict the clusters to group the cryptocurrencies using the PCA data.
+. Create a copy of the DataFrame with the PCA data and add a new column to store the predicted clusters.
+. Create a scatter plot using hvPlot as follows:
+. Set the x-axis as "PCA1" and the y-axis as "PCA2".
+. Color the graph points with the labels found using K-means.
+. Add the "coin_id" column in the hover_cols parameter to identify the cryptocurrency represented by each data point.
+<img width="720" alt="Screenshot 2024-08-02 at 2 34 30 pm" src="https://github.com/user-attachments/assets/04c52ba1-d867-4bb9-be0d-ada8bc9fe9e1">
+
+## Visualize and Compare the Results
 In this section, you will visually analyze the cluster analysis results by contrasting the outcome with and without using the optimization techniques.
 
-Answer the following question:
-What is the impact of using fewer features to cluster the data using K-Means?
-My answer: "Using fewer features to cluster the data causes the majority clusters to become much more concentrated compared to the original data plot. The PCA plot, with fewer features, has also distanced cluster 3 (coin_id = "celsius-degree-token") from clusters 0 and 2 which is in contrast to the original data plot where cluster 3 appears to be amongst cluster 0. This clearly shows that there is a feature within the original data which is having a strong contribution to coin_id "celsius_degree_token" to have it's own cluster; which is not coming through on the plot. The PCA data, in my opinion, displays a much better representation of the clusters, and that 4 is in fact the correct number of clusters required for this dataset."
-Elbow Composite:
-PCA elbow curve
-Scatter Composite:
-PCA elbow curve
+<img width="726" alt="Screenshot 2024-08-02 at 2 36 25 pm" src="https://github.com/user-attachments/assets/9a5ffd72-b5ca-4944-88f1-e2f314b1c590">
+
+<img width="717" alt="Screenshot 2024-08-02 at 2 36 36 pm" src="https://github.com/user-attachments/assets/21bf9058-2cff-44ea-be64-2d3fdb826fe2">
+
+#### Answer the following question: 
+
+**Question:** After visually analyzing the cluster analysis results, what is the impact of using fewer features to cluster the data using K-Means?
+
+**Answer:** 
+Compared to our original data, the clusters indicated with PCA are more defined and clearly distinguishable. There is a stark difference in the distance between coins, ethlend & celsius-degree-token when comparing both cluster data. When we apply PCA with fewer features, we see those coins have a significant separation between the bulk of our clusters.
+
+In our original data, our clusters overlap and aren't separated. With PCA, and the added evidence of lower inertia our data is more clean and can be used to draw clear predictions. So in conclusion, having fewer features to cluster our data using K-Means seems to have a positive impact on our data.
